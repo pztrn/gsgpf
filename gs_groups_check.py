@@ -39,7 +39,7 @@ class Check_Groups():
             
         self.get_groups_data()
         self.get_profiles_data()
-        self.get_subscribed_groups()
+        #self.get_subscribed_groups()
         self.check_groups_presence()
         self.add_groups_profiles()
         self.modify_groups()
@@ -70,7 +70,7 @@ class Check_Groups():
     def check_groups_presence(self):
         print "Checking groups..."
         for item in self.groups_data:
-            if item["id"] in self.subscribed_groups and item["profile_id"] == 0:
+            if item["profile_id"] == 0:
                 found, correct, profile_id = self.check_profiles_for_group(item["nickname"], item["profile_id"])
                 if not found:
                     print "{0} in subscribed, but profile data not found. It's profile data will be added".format(item["nickname"])
